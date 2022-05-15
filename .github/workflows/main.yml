@@ -2,7 +2,7 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
 
 
@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v2
       - run: npm ci
-      - run: npx nx test      
+      - run: npx nx test
       - name: Process jest results with default
         if: always()
         uses: im-open/process-jest-test-results@v2.0.5
