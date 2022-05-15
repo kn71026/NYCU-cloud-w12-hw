@@ -15,6 +15,6 @@ describe('Trade', () => {
   // second test case: 2 difference books = $8*2*0.95
   test('second test case', () => {
     trade.checkout([1, 2]);
-    expect(trade.price).toBe(16);
+    expect(trade.price).toBe(15.2);
   });
 });
