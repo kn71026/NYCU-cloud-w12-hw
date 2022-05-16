@@ -23,6 +23,10 @@ describe('Trade', () => {
     trade.checkout([1, 1, 2]);
     expect(trade.price).toBe(8 * 2 * 0.95 + 8 * 1);
   });
-
+  // fourth test case: 4 difference books and 2 difference books = $8 * 4 * 0.8 + 8 * 2 * 0.95
+  test('fourth  test case', () => {
+    trade.checkout([1, 2, 2, 3, 3, 4]);
+    expect(trade.price).toBe(8 * 4 * 0.8 + 8 * 2 * 0.95);
+  });
 
 });
