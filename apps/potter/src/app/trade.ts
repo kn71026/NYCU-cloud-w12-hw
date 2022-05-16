@@ -14,9 +14,13 @@ export class Trade {
     }
 
     while (this._bookCount.filter(v => v > 0).length > 0) {
+      if (this._bookCount.filter(v => v > 0).length == 5 && this._bookCount.filter(v => v == 1).length == 2) {
+        this._bookCount[this._bookCount.indexOf(1)]++;
+        this._bookCount[this._bookCount.indexOf(1)]--;
+      }
       this._totalPrice += this._discount[this._bookCount.filter(v => v > 0).length] * this._price * this._bookCount.filter(v => v > 0).length;
       this._bookCount = this._bookCount.filter(v => v > 0).map(v => v - 1);
-      // console.log('totalPrice:', this._totalPrice);
+
     }
   }
 
