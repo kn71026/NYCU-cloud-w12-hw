@@ -9,12 +9,20 @@ describe('Trade', () => {
   // first test case: 1 books = $8
   test('first test case', () => {
     trade.checkout([1]);
-    expect(trade.price).toBe(8);
+    expect(trade.price).toBe(8 * 1);
   });
 
-  // second test case: 2 difference books = $8*2*0.95
+  // second test case: 2 difference books = $8 * 2 * 0.95
   test('second test case', () => {
     trade.checkout([1, 2]);
-    expect(trade.price).toBe(15.2);
+    expect(trade.price).toBe(8 * 2 * 0.95);
   });
+
+  // third test case: 2 difference books and 1 same books = $8 * 2 * 0.95 + 8 * 1
+  test('third  test case', () => {
+    trade.checkout([1, 1, 2]);
+    expect(trade.price).toBe(8 * 2 * 0.95 + 8 * 1);
+  });
+
+
 });
