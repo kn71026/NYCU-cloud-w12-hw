@@ -7,11 +7,17 @@ export class Trade {
   private _discount = [1, 1, 0.95, 0.9, 0.8, 0.75];
 
   checkout(bucket: number[]) {
+    this._totalPrice = 0;
+    this._bookCount = [0, 0, 0, 0, 0];
     for (let i = 0; i < bucket.length; i++) {
-      console.log(bucket[i])
-      this._bookCount[i]++;
+      this._bookCount[bucket[i] - 1] += 1;
     }
-    this._totalPrice = this._discount[this._bookCount.filter(v => v !== 0).length] * this._price * bucket.length
+
+    while (this._bookCount.filter(v => v > 0).length > 0) {
+      this._totalPrice += this._discount[this._bookCount.filter(v => v > 0).length] * this._price * this._bookCount.filter(v => v > 0).length;
+      this._bookCount = this._bookCount.filter(v => v > 0).map(v => v - 1);
+      // console.log('totalPrice:', this._totalPrice);
+    }
   }
 
   get price() {
